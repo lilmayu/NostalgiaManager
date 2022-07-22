@@ -40,8 +40,6 @@ public class Main extends JavaPlugin {
         Logger.info("");
         Logger.info("Loading done in " + (System.currentTimeMillis() - start) + "ms!");
         Logger.info("");
-
-        instance = this;
     }
 
     @Override
