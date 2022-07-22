@@ -1,0 +1,10 @@
+name: NostalgiaManager
+version: 1.0.0
+main: dev.mayuna.nostalgiamanager.Main
+authors: [ Mayuna ]
+
+commands:
+  nostalgia-reload:
+    description: Reloads plugin's config
+    usage: /nostalgia-reload
+    permission: nostalgiamanager.admin

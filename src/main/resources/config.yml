@@ -1,0 +1,11 @@
+debug: true
+
+modules:
+  world-border:
+    enabled: false
+    distances:
+      overworld: 10_000
+      nether: 1250
+      end: 10_000
+    ignore-creative: true
+    ignore-ops: true
