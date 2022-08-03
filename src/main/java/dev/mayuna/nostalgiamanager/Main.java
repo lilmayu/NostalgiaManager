@@ -11,11 +11,12 @@ public class Main extends JavaPlugin {
 
     private static @Getter Main instance;
 
-    private static @Getter WorldBorderModule worldBorderModule;
+    private static @Getter long start;
 
     @Override
     public void onEnable() {
         instance = this;
+        start = System.currentTimeMillis();
         PluginDescriptionFile pluginDescription = this.getDescription();
 
         Logger.info("");
@@ -51,5 +52,9 @@ public class Main extends JavaPlugin {
 
         Logger.info("o/");
         instance = null;
+    }
+
+    public static long getElapsedTime() {
+        return System.currentTimeMillis() - start;
     }
 }
