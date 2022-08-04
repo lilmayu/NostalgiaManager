@@ -17,10 +17,12 @@ public class ChatPingsCommand implements CommandExecutor {
             return true;
         }
 
-        if ((!(commandSender instanceof Player player))) {
+        if ((!(commandSender instanceof Player))) {
             ChatInfo.error(commandSender, "This command is for players!");
             return true;
         }
+
+        Player player = (Player) commandSender;
 
         if (args.length == 0) {
             boolean disabledChatPings = EnhancedChatModule.hasPlayerDisabledPings(player.getUniqueId());
@@ -32,16 +34,22 @@ public class ChatPingsCommand implements CommandExecutor {
         EnhancedChatSettingsData settingsData = EnhancedChatModule.getSettingsForPlayer(player.getUniqueId());
 
         switch (args[0]) {
-            case "on" -> {
+            case "on": {
                 settingsData.setDisabledPings(false);
                 ChatInfo.success(player, "Successfully turned §eon§a chat pings!");
+
+                break;
             }
-            case "off" -> {
+            case "off": {
                 settingsData.setDisabledPings(true);
                 ChatInfo.success(player, "Successfully turned §coff§a chat pings!");
+
+                break;
             }
-            default -> {
+            default: {
                 ChatInfo.error(player, "Incorrect usage! Syntax: /chat-pings <on|off>");
+
+                break;
             }
         }
 
