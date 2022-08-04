@@ -8,3 +8,6 @@ commands:
     description: Reloads plugin's config
     usage: /nostalgia-reload
     permission: nostalgiamanager.admin
+  chat-pings:
+    description: Allows you to configure chat pings for yourself
+    usage: /chat-pings <on|off>

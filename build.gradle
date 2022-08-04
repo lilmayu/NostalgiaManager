@@ -7,14 +7,21 @@ group 'dev.mayuna'
 version '1.0'
 
 repositories {
-    flatDir { dirs 'libs'}
+    flatDir { dirs 'libs' }
     mavenCentral()
+
+    maven { url = "https://s01.oss.sonatype.org/content/repositories/releases/" }
 }
 
 dependencies {
-
     // CraftBukkit 1.6.4
-    compileOnly name: 'craftbukkit' // ./libs/craftbukkit.jar
+    compileOnly name: 'craftsalad-1.6.4-R2.0-all'
+
+    // Personal libraries
+    implementation 'dev.mayuna:pumpk1n:1.1.1'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.9.0'
 
     // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.24'

@@ -42,5 +42,6 @@ bin/
 .DS_Store
 
 craftbukkit.jar
+craftsalad-1.6.4-R2.0-all.jar
 
 .idea/

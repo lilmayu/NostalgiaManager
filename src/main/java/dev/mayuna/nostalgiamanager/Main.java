@@ -1,8 +1,11 @@
 package dev.mayuna.nostalgiamanager;
 
-import dev.mayuna.nostalgiamanager.modules.worldborder.WorldBorderModule;
+import dev.mayuna.nostalgiamanager.commands.NostalgiaReloadCommand;
 import dev.mayuna.nostalgiamanager.utils.Config;
 import dev.mayuna.nostalgiamanager.utils.Logger;
+import dev.mayuna.pumpk1n.Pumpk1n;
+import dev.mayuna.pumpk1n.impl.FolderStorageHandler;
+import dev.mayuna.pumpk1n.impl.SQLiteStorageHandler;
 import lombok.Getter;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,7 +14,13 @@ public class Main extends JavaPlugin {
 
     private static @Getter Main instance;
 
+    private static @Getter Pumpk1n pumpk1n;
+
     private static @Getter long start;
+
+    public static long getElapsedTime() {
+        return System.currentTimeMillis() - start;
+    }
 
     @Override
     public void onEnable() {
@@ -27,15 +36,19 @@ public class Main extends JavaPlugin {
 
         // TODO: Check jestli je nová verze na githubu
 
-        long start = System.currentTimeMillis();
-
         Logger.info("Loading config...");
         Config.load();
+
+        Logger.info("Loading Pumpk1n...");
+        loadPumpk1n();
+
+        Logger.info("Registering commands...");
+        loadCommands();
 
         Logger.info("Preparing modules...");
         Modules.prepareModules();
 
-        Logger.info("Loading enabled modules...");
+        Logger.info("Loading modules...");
         Modules.loadModules();
 
         Logger.info("");
@@ -50,11 +63,20 @@ public class Main extends JavaPlugin {
         Logger.info("Unloading modules...");
         Modules.unloadModules();
 
+        Logger.info("Saving Pumpk1n...");
+        pumpk1n.getDataHolderList().forEach(dataHolder -> pumpk1n.saveDataHolder(dataHolder));
+
         Logger.info("o/");
         instance = null;
     }
 
-    public static long getElapsedTime() {
-        return System.currentTimeMillis() - start;
+    private void loadCommands() {
+        instance.getCommand("nostalgia-reload").setExecutor(new NostalgiaReloadCommand());
+    }
+
+    private void loadPumpk1n() {
+        pumpk1n = new Pumpk1n(new FolderStorageHandler(Config.Pumpk1n.getDataFolder()));
+        Logger.info("Preparing Pumpk1n...");
+        pumpk1n.prepareStorage();
     }
 }

@@ -1,6 +1,12 @@
 debug: true
 
+pumpk1n:
+  data-folder: "./plugins/NostalgiaManager/data/"
+
 modules:
+  enhanced-chat:
+    enabled: true
+    ping-sound: CHICKEN_EGG_POP
   world-border:
     enabled: false
     distances:

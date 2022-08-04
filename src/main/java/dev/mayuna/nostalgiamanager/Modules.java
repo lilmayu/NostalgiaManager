@@ -1,6 +1,7 @@
 package dev.mayuna.nostalgiamanager;
 
 import dev.mayuna.nostalgiamanager.api.Module;
+import dev.mayuna.nostalgiamanager.modules.enhancedchat.EnhancedChatModule;
 import dev.mayuna.nostalgiamanager.modules.worldborder.WorldBorderModule;
 import dev.mayuna.nostalgiamanager.utils.Logger;
 import lombok.Getter;
@@ -15,13 +16,14 @@ public class Modules {
     public static void prepareModules() {
         // All modules regardless if they are enabled or not
         modules.add(new WorldBorderModule());
+        modules.add(new EnhancedChatModule());
     }
 
     public static void loadModules() {
         modules.forEach(module -> {
             Logger.addClassPrefix(module.getClass(), module.getClass().getSimpleName());
 
-            Logger.debug("Loading module " + module.getClass().getName());
+            Logger.debug("Loading module " + module.getClass().getSimpleName());
 
             module.onLoad();
         });
@@ -29,7 +31,7 @@ public class Modules {
 
     public static void unloadModules() {
         modules.forEach(module -> {
-            Logger.debug("Unloading module " + module.getClass().getName());
+            Logger.debug("Unloading module " + module.getClass().getSimpleName());
 
             module.onUnload();
         });
