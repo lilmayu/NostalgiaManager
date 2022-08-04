@@ -31,7 +31,7 @@ public class EnhancedChatModule implements Module {
         PluginManager pm = pluginInstance.getServer().getPluginManager();
         pm.registerEvents(new EnhancedChatListener(), pluginInstance);
 
-        Logger.info("Loading commands...");
+        Logger.info("Registering commands...");
         pluginInstance.getCommand("chat-pings").setExecutor(new ChatPingsCommand());
     }
 

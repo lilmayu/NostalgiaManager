@@ -1,6 +1,7 @@
 package dev.mayuna.nostalgiamanager;
 
 import dev.mayuna.nostalgiamanager.commands.NostalgiaReloadCommand;
+import dev.mayuna.nostalgiamanager.listeners.PlayerJoinListener;
 import dev.mayuna.nostalgiamanager.utils.Config;
 import dev.mayuna.nostalgiamanager.utils.Logger;
 import dev.mayuna.pumpk1n.Pumpk1n;
@@ -8,6 +9,7 @@ import dev.mayuna.pumpk1n.impl.FolderStorageHandler;
 import dev.mayuna.pumpk1n.impl.SQLiteStorageHandler;
 import lombok.Getter;
 import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -42,6 +44,9 @@ public class Main extends JavaPlugin {
         Logger.info("Loading Pumpk1n...");
         loadPumpk1n();
 
+        Logger.info("Registering listeners...");
+        registerListeners();
+
         Logger.info("Registering commands...");
         loadCommands();
 
@@ -68,6 +73,12 @@ public class Main extends JavaPlugin {
 
         Logger.info("o/");
         instance = null;
+    }
+
+    private void registerListeners() {
+        PluginManager pm = Main.getInstance().getServer().getPluginManager();
+
+        pm.registerEvents(new PlayerJoinListener(), this);
     }
 
     private void loadCommands() {
