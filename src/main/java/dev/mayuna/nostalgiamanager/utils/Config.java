@@ -6,6 +6,9 @@ import org.bukkit.Sound;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Config {
 
     private static @Getter boolean debug;
@@ -24,6 +27,7 @@ public class Config {
         Pumpk1n.load(config.getConfigurationSection("pumpk1n"));
         Modules.WorldBorder.load(config.getConfigurationSection("modules.world-border"));
         Modules.EnhancedChat.load(config.getConfigurationSection("modules.enhanced-chat"));
+        Modules.MobLimiter.load(config.getConfigurationSection("modules.mob-limiter"));
     }
 
     public static class Pumpk1n {
@@ -73,6 +77,21 @@ public class Config {
             public static class Distances {
 
                 private static @Getter long overworld, nether, end;
+            }
+        }
+
+        public static class MobLimiter {
+
+            private static @Getter boolean enabled;
+            private static @Getter int entityLimit;
+            private static @Getter int checkEveryTicks;
+            private static @Getter List<String> ignoredWorlds = new LinkedList<>();
+
+            public static void load(ConfigurationSection section) {
+                enabled = section.getBoolean("enabled");
+                entityLimit = section.getInt("entity-limit");
+                checkEveryTicks = section.getInt("check-every-ticks");
+                ignoredWorlds = section.getStringList("ignored-worlds");
             }
         }
     }

@@ -36,13 +36,13 @@ public class ChatPingsCommand implements CommandExecutor {
         switch (args[0]) {
             case "on": {
                 settingsData.setDisabledPings(false);
-                ChatInfo.success(player, "Successfully turned §eon§a chat pings!");
+                ChatInfo.success(player, "Successfully turned §eon{c} chat pings!");
 
                 break;
             }
             case "off": {
                 settingsData.setDisabledPings(true);
-                ChatInfo.success(player, "Successfully turned §coff§a chat pings!");
+                ChatInfo.success(player, "Successfully turned §coff{c} chat pings!");
 
                 break;
             }

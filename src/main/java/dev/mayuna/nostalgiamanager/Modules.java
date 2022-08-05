@@ -2,6 +2,7 @@ package dev.mayuna.nostalgiamanager;
 
 import dev.mayuna.nostalgiamanager.api.Module;
 import dev.mayuna.nostalgiamanager.modules.enhancedchat.EnhancedChatModule;
+import dev.mayuna.nostalgiamanager.modules.moblimiter.MobLimiterModule;
 import dev.mayuna.nostalgiamanager.modules.worldborder.WorldBorderModule;
 import dev.mayuna.nostalgiamanager.utils.Logger;
 import lombok.Getter;
@@ -17,6 +18,7 @@ public class Modules {
         // All modules regardless if they are enabled or not
         modules.add(new WorldBorderModule());
         modules.add(new EnhancedChatModule());
+        modules.add(new MobLimiterModule());
     }
 
     public static void loadModules() {

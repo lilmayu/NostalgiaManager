@@ -8,6 +8,7 @@ import dev.mayuna.pumpk1n.Pumpk1n;
 import dev.mayuna.pumpk1n.impl.FolderStorageHandler;
 import dev.mayuna.pumpk1n.impl.SQLiteStorageHandler;
 import lombok.Getter;
+import org.bukkit.Chunk;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -68,7 +69,7 @@ public class Main extends JavaPlugin {
         Logger.info("Unloading modules...");
         Modules.unloadModules();
 
-        Logger.info("Saving Pumpk1n...");
+        Logger.info("Saving Pumpk1n data...");
         pumpk1n.getDataHolderList().forEach(dataHolder -> pumpk1n.saveDataHolder(dataHolder));
 
         Logger.info("o/");

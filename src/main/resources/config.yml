@@ -15,3 +15,9 @@ modules:
       end: 10_000
     ignore-creative: true
     ignore-ops: true
+  mob-limiter:
+    enabled: true
+    entity-limit: 50
+    check-every-ticks: 600
+    ignored-worlds:
+      - the_end
