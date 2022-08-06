@@ -18,7 +18,7 @@ dependencies {
     compileOnly name: 'craftsalad-1.6.4-R2.0-all'
 
     // Personal libraries
-    implementation 'dev.mayuna:pumpk1n:1.1.1'
+    implementation 'dev.mayuna:pumpk1n:1.2.1-hotfix1'
 
     // Gson
     implementation 'com.google.code.gson:gson:2.9.0'

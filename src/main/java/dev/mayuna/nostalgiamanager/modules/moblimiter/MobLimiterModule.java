@@ -33,7 +33,15 @@ public class MobLimiterModule implements Module {
         Logger.info("Loading...");
 
         Logger.info("Creating scheduler...");
-        mobCheckTask = Bukkit.getScheduler().runTaskTimerAsynchronously(pluginInstance, this::checkMobs, 0, Config.Modules.MobLimiter.getCheckEveryTicks());
+        recreateScheduler();
+    }
+
+    public void recreateScheduler() {
+        if (mobCheckTask != null){
+            mobCheckTask.cancel();
+        }
+
+        mobCheckTask = Bukkit.getScheduler().runTaskTimerAsynchronously(Main.getInstance(), this::checkMobs, 0, Config.Modules.MobLimiter.getCheckEveryTicks());
     }
 
     private void checkMobs() {

@@ -1,5 +1,6 @@
 package dev.mayuna.nostalgiamanager.commands;
 
+import dev.mayuna.nostalgiamanager.modules.moblimiter.MobLimiterModule;
 import dev.mayuna.nostalgiamanager.utils.ChatInfo;
 import dev.mayuna.nostalgiamanager.utils.Config;
 import org.bukkit.command.Command;
@@ -12,6 +13,7 @@ public class NostalgiaReloadCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
         ChatInfo.info(commandSender, "Reloading...");
         Config.load();
+        MobLimiterModule.getInstance().recreateScheduler();
         ChatInfo.success(commandSender, "Config reloaded.");
         return true;
     }

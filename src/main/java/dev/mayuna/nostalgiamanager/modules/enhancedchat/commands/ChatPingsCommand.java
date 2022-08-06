@@ -53,6 +53,8 @@ public class ChatPingsCommand implements CommandExecutor {
             }
         }
 
+        settingsData.getDataHolderParent().save();
+
         return true;
     }
 }

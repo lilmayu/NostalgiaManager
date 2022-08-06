@@ -6,9 +6,7 @@ import dev.mayuna.nostalgiamanager.utils.Config;
 import dev.mayuna.nostalgiamanager.utils.Logger;
 import dev.mayuna.pumpk1n.Pumpk1n;
 import dev.mayuna.pumpk1n.impl.FolderStorageHandler;
-import dev.mayuna.pumpk1n.impl.SQLiteStorageHandler;
 import lombok.Getter;
-import org.bukkit.Chunk;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -58,7 +56,7 @@ public class Main extends JavaPlugin {
         Modules.loadModules();
 
         Logger.info("");
-        Logger.info("Loading done in " + (System.currentTimeMillis() - start) + "ms!");
+        Logger.info("Loading done in " + getElapsedTime() + "ms!");
         Logger.info("");
     }
 

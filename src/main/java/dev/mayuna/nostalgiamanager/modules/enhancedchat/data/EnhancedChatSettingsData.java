@@ -1,15 +1,13 @@
 package dev.mayuna.nostalgiamanager.modules.enhancedchat.data;
 
-import dev.mayuna.pumpk1n.api.DataElement;
-import lombok.Data;
+import dev.mayuna.pumpk1n.api.ParentedDataElement;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
 @NoArgsConstructor
-public class EnhancedChatSettingsData implements DataElement {
+public class EnhancedChatSettingsData extends ParentedDataElement {
 
-    private boolean disabledPings;
+    private @Setter @Getter boolean disabledPings;
 
 }
